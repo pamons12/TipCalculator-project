@@ -31,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private Button calculateButton;
 
     private Intent customTipIntent;
+    private Intent calculateTipIntent;
 
-    private int checkTotal;
+    private int numOfPeople;
+    private double checkTotal;
     private double tipPercent;
-    private float numOfPeople;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,53 @@ public class MainActivity extends AppCompatActivity {
         numOfPeopleEditText = findViewById(R.id.numOfPeopleEditText);
         tipPercentageTextView = findViewById(R.id.tipPercentageTextView);
 
+        calculateTipIntent = new Intent(this, displayTipActivity.class);
+        calculateButton = (Button) findViewById(R.id.calculateTipButton);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean validCheckTotalEntry = false;
+                boolean validNumOfPeopleEntry = false;
+                boolean validTipPercent = false;
+                if (checkTotalEditText.getText().toString().isEmpty()){
+                    showErrorAlert("Enter check total",checkTotalEditText.getId());
+                    validCheckTotalEntry = false;
+                } else {
+                    checkTotal = Double.parseDouble(checkTotalEditText.getText().toString());
+                    if (checkTotal<=0){
+                        showErrorAlert("Check total cannot be less than or equal to 0",checkTotalEditText.getId());
+                        validCheckTotalEntry = false;
+                    } else{
+                        validCheckTotalEntry = true;
+                    }
+                }
+                if (numOfPeopleEditText.getText().toString().isEmpty()){
+                    showErrorAlert("Enter number of people to split check with",numOfPeopleEditText.getId());
+                    validNumOfPeopleEntry = false;
+                } else {
+                    numOfPeople = Integer.parseInt(numOfPeopleEditText.getText().toString());
+                    if (numOfPeople<=0){
+                        showErrorAlert("Number of people cannot be less than 1",numOfPeopleEditText.getId());
+                        validNumOfPeopleEntry = false;
+                    } else {
+                        validNumOfPeopleEntry = true;
+                    }
+                }
+                if (tipPercent<=0){
+                    showErrorAlert("Tip percent cannot be less than or equal to 0",customPercentButton.getId());
+                    validTipPercent = false;
+                } else {
+                    validTipPercent = true;
+                }
+                if (validCheckTotalEntry && validNumOfPeopleEntry && validTipPercent){
+                    calculateTipIntent.putExtra("checkTotal",checkTotal);
+                    calculateTipIntent.putExtra("numOfPeople",numOfPeople);
+                    calculateTipIntent.putExtra("tipPercent",tipPercent);
+                    startActivityForResult(calculateTipIntent,REQUEST_CODE);
+                }
+
+            }
+        });
 
         customTipIntent = new Intent(this, customTipActivity.class);
         customPercentButton = (Button) findViewById(R.id.customPerButton);
@@ -61,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 checkTotal=0;
                 tipPercent=0;
                 numOfPeople=0;
+                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
             }
         });
 
@@ -68,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         tenPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tipPercent=.1;
-                Toast.makeText(getApplicationContext(),"10% Tip Selected",Toast.LENGTH_SHORT).show();
+                tipPercent=10;
+                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
             }
         });
 
@@ -77,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
         fifteenPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tipPercent=.15;
-                Toast.makeText(getApplicationContext(),"15% Tip Selected",Toast.LENGTH_SHORT).show();
+                tipPercent=15;
+                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
             }
         });
 
@@ -86,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
         twentyPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tipPercent=.2;
-                Toast.makeText(getApplicationContext(),"20% Tip Selected",Toast.LENGTH_SHORT).show();
+                tipPercent=20;
+                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
             }
         });
 
@@ -101,7 +150,12 @@ public class MainActivity extends AppCompatActivity {
         //From customTipActivity
         if (resultCode==1) {
             tipPercent = extras.getDouble("tipPercent");
-            Toast.makeText(getApplicationContext(),tipPercent+"% Tip Selected",Toast.LENGTH_SHORT).show();
+            tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+        }
+
+        //From display tip activity
+        if (resultCode==2){
+            resetButton.performClick();
         }
     }
 

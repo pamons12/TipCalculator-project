@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/tipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tip Amount: " />
+    <TextView
+        android:id="@+id/totalWithoutTipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Not Including Tip: "
+        android:layout_margin="10dp"/>
+    <TextView
+        android:id="@+id/totalWithTipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Including Tip: "
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/totalPerPersonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Per Person: " />
+
+    <Button
+        android:id="@+id/resetButtonDisplayTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:backgroundTint="@color/red"
+        android:layout_marginTop="60dp"/>
+</LinearLayout>
