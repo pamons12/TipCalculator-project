@@ -42,7 +42,7 @@ public class customTipActivity extends AppCompatActivity {
     public void finish() {
         Intent customTipIntent = new Intent();
         customTipIntent.putExtra("tipPercent", tipPercent);
-        setResult(RESULT_OK, customTipIntent);
+        setResult(1, customTipIntent);
         super.finish();
     }
 
