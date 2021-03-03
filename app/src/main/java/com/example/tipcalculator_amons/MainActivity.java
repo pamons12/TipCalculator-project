@@ -1,5 +1,6 @@
 package com.example.tipcalculator_amons;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -140,6 +141,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (savedInstanceState != null){
+            numOfPeople = savedInstanceState.getInt("numOfPeople");
+            checkTotal = savedInstanceState.getDouble("checkTotal");
+            tipPercent = savedInstanceState.getDouble("tipPercent");
+            tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+        } else {
+            numOfPeople = 0;
+            checkTotal = 0;
+            tipPercent = 0;
+        }
+
     }
 
     @Override
@@ -171,5 +183,13 @@ public class MainActivity extends AppCompatActivity {
                                 findViewById(fieldId).requestFocus();
                             }
                         }).show();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle saveState) {
+        super.onSaveInstanceState(saveState);
+        saveState.putInt("numOfPeople",numOfPeople);
+        saveState.putDouble("checkTotal",checkTotal);
+        saveState.putDouble("tipPercent",tipPercent);
     }
 }
