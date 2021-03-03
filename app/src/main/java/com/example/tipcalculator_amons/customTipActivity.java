@@ -13,21 +13,27 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class customTipActivity extends AppCompatActivity {
+
     private EditText customTipEditText;
     private Button confirmButton;
     private double tipPercent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_tip);
 
+        //Initialize editText
         customTipEditText = (EditText) findViewById(R.id.customTipValue);
 
+        //For confirmButton, when pressed take value from edit text and send it back to MainActivity
         confirmButton = (Button) findViewById(R.id.confirmTipButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String editTextReturnValue = customTipEditText.getText().toString();
+
+                //Checks to make sure edit text is not empty
                 if(customTipEditText.getText().toString().isEmpty()){
                     showErrorAlert("Empty Percent Field",customTipEditText.getId());
                 } else {
@@ -38,6 +44,8 @@ public class customTipActivity extends AppCompatActivity {
         });
     }
 
+    //Called when ready to send values back to MainActivity
+    // puts tipPercent in an Intent and sends it back with result code of 1
     @Override
     public void finish() {
         Intent customTipIntent = new Intent();
@@ -46,6 +54,7 @@ public class customTipActivity extends AppCompatActivity {
         super.finish();
     }
 
+    //Displays an error message for the user to see if called
     private void showErrorAlert(String errorMessage, final int fieldId) {
         new AlertDialog.Builder(this)
                 .setTitle("Error")

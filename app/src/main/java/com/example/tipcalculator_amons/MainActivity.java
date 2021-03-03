@@ -42,10 +42,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Setup EditTexts
         checkTotalEditText = findViewById(R.id.checkTotalEditText);
         numOfPeopleEditText = findViewById(R.id.numOfPeopleEditText);
         tipPercentageTextView = findViewById(R.id.tipPercentageTextView);
 
+        //For the calculate button, checks to make sure entrys are valid and than sends
+        // user to new activity disaplyTipActivity, displaying the results
         calculateTipIntent = new Intent(this, displayTipActivity.class);
         calculateButton = (Button) findViewById(R.id.calculateTipButton);
         calculateButton.setOnClickListener(new View.OnClickListener() {
@@ -54,11 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 boolean validCheckTotalEntry = false;
                 boolean validNumOfPeopleEntry = false;
                 boolean validTipPercent = false;
+
+                //Check to make sure check total field is not empty
                 if (checkTotalEditText.getText().toString().isEmpty()){
                     showErrorAlert("Enter check total",checkTotalEditText.getId());
                     validCheckTotalEntry = false;
                 } else {
                     checkTotal = Double.parseDouble(checkTotalEditText.getText().toString());
+
+                    //Check to make sure check total is not <= 0
                     if (checkTotal<=0){
                         showErrorAlert("Check total cannot be less than or equal to 0",checkTotalEditText.getId());
                         validCheckTotalEntry = false;
@@ -66,11 +73,15 @@ public class MainActivity extends AppCompatActivity {
                         validCheckTotalEntry = true;
                     }
                 }
+
+                //Check to make sure num of people field is not empty
                 if (numOfPeopleEditText.getText().toString().isEmpty()){
                     showErrorAlert("Enter number of people to split check with",numOfPeopleEditText.getId());
                     validNumOfPeopleEntry = false;
                 } else {
                     numOfPeople = Integer.parseInt(numOfPeopleEditText.getText().toString());
+
+                    //Check to make sure num of people is not <= 0
                     if (numOfPeople<=0){
                         showErrorAlert("Number of people cannot be less than 1",numOfPeopleEditText.getId());
                         validNumOfPeopleEntry = false;
@@ -78,12 +89,16 @@ public class MainActivity extends AppCompatActivity {
                         validNumOfPeopleEntry = true;
                     }
                 }
+
+                //Check to make sure tip percent is not <= 0
                 if (tipPercent<=0){
                     showErrorAlert("Tip percent cannot be less than or equal to 0",customPercentButton.getId());
                     validTipPercent = false;
                 } else {
                     validTipPercent = true;
                 }
+
+                //If all 3 conditions are satisfied than go to displayTipActivity
                 if (validCheckTotalEntry && validNumOfPeopleEntry && validTipPercent){
                     calculateTipIntent.putExtra("checkTotal",checkTotal);
                     calculateTipIntent.putExtra("numOfPeople",numOfPeople);
@@ -94,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //For customPercentButton, when pressed will send user to customTipActivity so they can
+        // enter a custom  tip amount
         customTipIntent = new Intent(this, customTipActivity.class);
         customPercentButton = (Button) findViewById(R.id.customPerButton);
         customPercentButton.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //For reset button, resets check total, tip percent, and number of people to 0
         resetButton = (Button) findViewById(R.id.resetButton);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //For 10 percent button, when clicked will set tip percent to 10
         tenPercentButton = (Button) findViewById(R.id._10PerButton);
         tenPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //For 15 percent button, when clicked will set tip percent to 15
         fifteenPercentButton = (Button) findViewById(R.id._15PerButton);
         fifteenPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ////For 20 percent button, when clicked will set tip percent to 20
         twentyPercentButton = (Button) findViewById(R.id._20PerButton);
         twentyPercentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Check to see if save state != null
+        //If not null will load values from save state into numOfPeople, checkTotal, and tipPercent
         if (savedInstanceState != null){
             numOfPeople = savedInstanceState.getInt("numOfPeople");
             checkTotal = savedInstanceState.getDouble("checkTotal");
@@ -154,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Used to collect responses from other activitys when they are done
+    // resultCode == 1 -> customTipActivity
+    // resultCode == 2 -> displayTipActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -165,12 +191,13 @@ public class MainActivity extends AppCompatActivity {
             tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
         }
 
-        //From display tip activity
+        //From display tip activity, resets values to 0
         if (resultCode==2){
             resetButton.performClick();
         }
     }
 
+    //Displays an error message for the user to see if called
     private void showErrorAlert(String errorMessage, final int fieldId) {
         new AlertDialog.Builder(this)
                 .setTitle("Error")
@@ -185,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                         }).show();
     }
 
+    //Saves variables numOfPeople, checkTotal, and tipPercent in a save state in case screen is rotated
     @Override
     protected void onSaveInstanceState(Bundle saveState) {
         super.onSaveInstanceState(saveState);
