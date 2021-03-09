@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
                 //Check to make sure check total field is not empty
                 if (checkTotalEditText.getText().toString().isEmpty()){
-                    showErrorAlert("Enter check total",checkTotalEditText.getId());
+                    showErrorAlert(getString(R.string.enter_check_total_error_label),checkTotalEditText.getId());
                     validCheckTotalEntry = false;
                 } else {
                     checkTotal = Double.parseDouble(checkTotalEditText.getText().toString());
 
                     //Check to make sure check total is not <= 0
                     if (checkTotal<=0){
-                        showErrorAlert("Check total cannot be less than or equal to 0",checkTotalEditText.getId());
+                        showErrorAlert(getString(R.string.check_total_less_than_0_error_label),checkTotalEditText.getId());
                         validCheckTotalEntry = false;
                     } else{
                         validCheckTotalEntry = true;
@@ -76,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
 
                 //Check to make sure num of people field is not empty
                 if (numOfPeopleEditText.getText().toString().isEmpty()){
-                    showErrorAlert("Enter number of people to split check with",numOfPeopleEditText.getId());
+                    showErrorAlert(getString(R.string.enter_number_of_people_error_label),numOfPeopleEditText.getId());
                     validNumOfPeopleEntry = false;
                 } else {
                     numOfPeople = Integer.parseInt(numOfPeopleEditText.getText().toString());
 
                     //Check to make sure num of people is not <= 0
                     if (numOfPeople<=0){
-                        showErrorAlert("Number of people cannot be less than 1",numOfPeopleEditText.getId());
+                        showErrorAlert(getString(R.string.num_of_people_less_than_1_error_label),numOfPeopleEditText.getId());
                         validNumOfPeopleEntry = false;
                     } else {
                         validNumOfPeopleEntry = true;
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Check to make sure tip percent is not <= 0
                 if (tipPercent<=0){
-                    showErrorAlert("Tip percent cannot be less than or equal to 0",customPercentButton.getId());
+                    showErrorAlert(getString(R.string.tip_percent_less_than_0_error_label),customPercentButton.getId());
                     validTipPercent = false;
                 } else {
                     validTipPercent = true;
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 checkTotal=0;
                 tipPercent=0;
                 numOfPeople=0;
-                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+                tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
             }
         });
 
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tipPercent=10;
-                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+                tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
             }
         });
 
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tipPercent=15;
-                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+                tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
             }
         });
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tipPercent=20;
-                tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+                tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
             }
         });
 
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             numOfPeople = savedInstanceState.getInt("numOfPeople");
             checkTotal = savedInstanceState.getDouble("checkTotal");
             tipPercent = savedInstanceState.getDouble("tipPercent");
-            tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+            tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
         } else {
             numOfPeople = 0;
             checkTotal = 0;
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         //From customTipActivity
         if (resultCode==1) {
             tipPercent = extras.getDouble("tipPercent");
-            tipPercentageTextView.setText("Current Tip Percentage: "+tipPercent+"%");
+            tipPercentageTextView.setText(getString(R.string.current_tip_percent_label) + " " + tipPercent + "%");
         }
 
         //From display tip activity, resets values to 0
@@ -200,9 +200,9 @@ public class MainActivity extends AppCompatActivity {
     //Displays an error message for the user to see if called
     private void showErrorAlert(String errorMessage, final int fieldId) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_message_title_label))
                 .setMessage(errorMessage)
-                .setNeutralButton("Close",
+                .setNeutralButton(getString(R.string.error_message_close_button_label),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,

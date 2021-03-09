@@ -47,10 +47,10 @@ public class displayTipActivity extends AppCompatActivity {
 
         //Calculate tip amount, totals, and displays them via the textViews
         tipAmount = checkTotal*(tipPercent/100);
-        tipAmountTextView.setText("Tip Amount: " + String.valueOf(tipAmount));
-        totalWithoutTipTextView.setText("Total Not Including Tip: " + String.valueOf(checkTotal));
-        totalWithTipTextView.setText("Total Including Tip: " + String.valueOf(tipAmount+checkTotal));
-        totalPerPersonTextView.setText("Total Per Person: " + String.valueOf((tipAmount+checkTotal)/numOfPeople));
+        tipAmountTextView.setText(getString(R.string.tip_amount_label) + " " + String.valueOf(tipAmount));
+        totalWithoutTipTextView.setText(getString(R.string.total_without_tip_label) + " " + String.valueOf(checkTotal));
+        totalWithTipTextView.setText(getString(R.string.total_with_tip_label) + " " + String.valueOf(tipAmount+checkTotal));
+        totalPerPersonTextView.setText(getString(R.string.total_per_person_label) + " " + String.valueOf((tipAmount+checkTotal)/numOfPeople));
 
         //For the resetButton, calls finish()
         resetButton = (Button) findViewById(R.id.resetButtonDisplayTip);
@@ -75,9 +75,9 @@ public class displayTipActivity extends AppCompatActivity {
     //Displays an error message for the user to see if called
     private void showErrorAlert(String errorMessage, final int fieldId) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_message_title_label))
                 .setMessage(errorMessage)
-                .setNeutralButton("Close",
+                .setNeutralButton(getString(R.string.error_message_close_button_label),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,

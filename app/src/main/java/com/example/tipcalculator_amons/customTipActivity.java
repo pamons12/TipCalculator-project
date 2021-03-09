@@ -35,7 +35,7 @@ public class customTipActivity extends AppCompatActivity {
 
                 //Checks to make sure edit text is not empty
                 if(customTipEditText.getText().toString().isEmpty()){
-                    showErrorAlert("Empty Percent Field",customTipEditText.getId());
+                    showErrorAlert(getString(R.string.empty_percent_error_label),customTipEditText.getId());
                 } else {
                     tipPercent = Double.parseDouble(customTipEditText.getText().toString());
                     finish();
@@ -57,9 +57,9 @@ public class customTipActivity extends AppCompatActivity {
     //Displays an error message for the user to see if called
     private void showErrorAlert(String errorMessage, final int fieldId) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_message_title_label))
                 .setMessage(errorMessage)
-                .setNeutralButton("Close",
+                .setNeutralButton(getString(R.string.error_message_close_button_label),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,
