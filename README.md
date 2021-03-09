@@ -81,7 +81,7 @@ Feel free to use any Layout you want. ConstrainLayout is a good option, but you 
  
  ***Note:*** Any issues you have with either the GitHub steps or Java/Android questions should be asked publically on Slack. If you have a question, chances are someone else does also. If you see someone has posted a question on Slack and you know the answer, please chime in and answer.
 
- ### Wow factors (See pictures folder)
+ ### Additions/Wow factors (See pictures folder)
  1. Colored buttons
  2. Added Russian Language
  3. Added error message code to alert users if they entered an invalid input
