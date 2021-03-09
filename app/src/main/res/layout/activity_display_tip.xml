@@ -10,30 +10,30 @@
         android:id="@+id/tipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tip Amount: " />
+        android:text="@string/tip_amount_label" />
     <TextView
         android:id="@+id/totalWithoutTipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Not Including Tip: "
+        android:text="@string/total_without_tip_label"
         android:layout_margin="10dp"/>
     <TextView
         android:id="@+id/totalWithTipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Including Tip: "
+        android:text="@string/total_with_tip_label"
         android:layout_marginBottom="10dp"/>
     <TextView
         android:id="@+id/totalPerPersonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Per Person: " />
+        android:text="@string/total_per_person_label" />
 
     <Button
         android:id="@+id/resetButtonDisplayTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
+        android:text="@string/reset_label"
         android:backgroundTint="@color/red"
         android:layout_marginTop="60dp"/>
 </LinearLayout>

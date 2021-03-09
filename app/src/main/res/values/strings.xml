@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TipCalculator-Amons</string>
+    <!--activity_main.xml -->
+    <string name="check_total_edit_text_hint_label">Enter check total</string>
+    <string name="num_of_poeple_edit_text_hint_label">Enter the # of people to split the check with</string>
+    <string name="percent_10_label">10%</string>
+    <string name="percent_15_label">15%</string>
+    <string name="percent_20_label">20%</string>
+    <string name="custom_percent_label">Custom Percent</string>
+    <string name="reset_label">Reset</string>
+    <string name="calculate_tip_label">Calculate Tip</string>
+    <string name="current_tip_percent_label">Current Tip Percentage: 0%</string>
+    <!--activity_custom_tip.xml -->
+    <string name="custom_tip_edit_text_hint_label">Enter Custom Tip Value</string>
+    <string name="confirm_label">Confirm</string>
+    <!--activity_display_tip.xml -->
+    <string name="tip_amount_label">Tip Amount: </string>
+    <string name="total_without_tip_label">Total Not Including Tip: </string>
+    <string name="total_with_tip_label">Total Including Tip: </string>
+    <string name="total_per_person_label">Total Per Person: </string>
 </resources>

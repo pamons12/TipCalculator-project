@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:inputType="numberDecimal"
-        android:hint="Enter Custom Tip Value"/>
+        android:hint="@string/custom_tip_edit_text_hint_label"/>
     <Button
         android:id="@+id/confirmTipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
+        android:text="@string/confirm_label"
         android:backgroundTint="@color/green"/>
 
 </LinearLayout>
