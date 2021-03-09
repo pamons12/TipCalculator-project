@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Калькулятор чаевых-Amons</string>
+    <!--activity_main.xml -->
+    <string name="check_total_edit_text_hint_label">Введите сумму проверки</string>
+    <string name="num_of_poeple_edit_text_hint_label">Введите количество людей, с которыми нужно разделить чек</string>
+    <string name="percent_10_label">10%</string>
+    <string name="percent_15_label">15%</string>
+    <string name="percent_20_label">20%</string>
+    <string name="custom_percent_label">Пользовательский процент</string>
+    <string name="reset_label">Перезагрузить</string>
+    <string name="calculate_tip_label">Рассчитать чаевые</string>
+    <string name="current_tip_percent_label">Текущий процент чаевых: 0%</string>
+    <!--activity_custom_tip.xml -->
+    <string name="custom_tip_edit_text_hint_label">Введите значение настраиваемого наконечника</string>
+    <string name="confirm_label">Подтверждать</string>
+    <!--activity_display_tip.xml -->
+    <string name="tip_amount_label">Сумма чаевых: </string>
+    <string name="total_without_tip_label">Итого без чаевых: </string>
+    <string name="total_with_tip_label">Итого, включая чаевые: </string>
+    <string name="total_per_person_label">Итого на человека, включая чаевые: </string>
+</resources>

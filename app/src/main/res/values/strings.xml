@@ -17,5 +17,5 @@
     <string name="tip_amount_label">Tip Amount: </string>
     <string name="total_without_tip_label">Total Not Including Tip: </string>
     <string name="total_with_tip_label">Total Including Tip: </string>
-    <string name="total_per_person_label">Total Per Person: </string>
+    <string name="total_per_person_label">Total Per Person Including Tip: </string>
 </resources>
