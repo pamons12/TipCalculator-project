@@ -20,10 +20,10 @@
     <string name="total_per_person_label">Итого на человека, включая чаевые:</string>
     <!--MainActivity.java -->
     <string name="enter_check_total_error_label">Введите сумму проверки</string>
-    <string name="check_total_less_than_0_error_label">Сумма чека не может быть меньше или равна 0</string>
+    <string name="check_total_less_than_1_error_label">Общая сумма чека не может быть меньше 1</string>
     <string name="enter_number_of_people_error_label">Введите количество людей, с которыми нужно разделить чек</string>
     <string name="num_of_people_less_than_1_error_label">Количество человек не может быть меньше 1</string>
-    <string name="tip_percent_less_than_0_error_label">Процент чаевых не может быть меньше или равен 0</string>
+    <string name="tip_percent_less_than_1_error_label">Процент чаевых не может быть меньше 1%</string>
     <string name="current_tip_percent_label">Текущий процент чаевых:</string>
     <string name="error_message_title_label">Ошибка</string>
     <string name="error_message_close_button_label">Закрыть</string>

@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     checkTotal = Double.parseDouble(checkTotalEditText.getText().toString());
 
                     //Check to make sure check total is not <= 0
-                    if (checkTotal<=0){
-                        showErrorAlert(getString(R.string.check_total_less_than_0_error_label),checkTotalEditText.getId());
+                    if (checkTotal<1){
+                        showErrorAlert(getString(R.string.check_total_less_than_1_error_label),checkTotalEditText.getId());
                         validCheckTotalEntry = false;
                     } else{
                         validCheckTotalEntry = true;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     numOfPeople = Integer.parseInt(numOfPeopleEditText.getText().toString());
 
                     //Check to make sure num of people is not <= 0
-                    if (numOfPeople<=0){
+                    if (numOfPeople<1){
                         showErrorAlert(getString(R.string.num_of_people_less_than_1_error_label),numOfPeopleEditText.getId());
                         validNumOfPeopleEntry = false;
                     } else {
@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //Check to make sure tip percent is not <= 0
-                if (tipPercent<=0){
-                    showErrorAlert(getString(R.string.tip_percent_less_than_0_error_label),customPercentButton.getId());
+                if (tipPercent<1){
+                    showErrorAlert(getString(R.string.tip_percent_less_than_1_error_label),customPercentButton.getId());
                     validTipPercent = false;
                 } else {
                     validTipPercent = true;
